@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zeitkapsel für Helena</title>
+  <style>
+    body {
+      font-family: 'Georgia', serif;
+      background: linear-gradient(to bottom, #0b0c1d, #1c1d2e);
+      color: #e8e8e8;
+      text-align: center;
+      padding: 50px;
+      overflow-x: hidden;
+    }
+    .stars {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      background: transparent url('https://www.transparenttextures.com/patterns/stardust.png') repeat;
+      animation: twinkle 10s infinite;
+      z-index: -1;
+    }
+    @keyframes twinkle {
+      0% { opacity: 0.8; }
+      50% { opacity: 1; }
+      100% { opacity: 0.8; }
+    }
+    .icon {
+      font-size: 2em;
+      margin: 10px;
+      color: #ffd700;
+      animation: float 6s ease-in-out infinite;
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+    .container {
+      max-width: 700px;
+      margin: auto;
+      padding: 30px;
+      background: rgba(0, 0, 0, 0.7);
+      border-radius: 16px;
+      box-shadow: 0 0 30px rgba(255,255,255,0.2);
+    }
+    h1 {
+      font-family: 'Garamond', serif;
+      font-size: 2.5em;
+      margin-bottom: 10px;
+      color: #ffd700;
+      text-shadow: 0 0 10px #ffd700;
+    }
+    .locked {
+      color: #bbbbbb;
+      font-style: italic;
+    }
+    #message {
+      display: none;
+      margin-top: 20px;
+      font-size: 1.2em;
+      line-height: 1.6em;
+      text-align: left;
+    }
+    .magic-symbol {
+      font-size: 3em;
+      margin: 10px 0;
+      color: #ffd700;
+      text-shadow: 0 0 5px #ffd700;
+    }
+    #countdown {
+      margin-top: 20px;
+      font-size: 1em;
+      font-style: italic;
+      color: #ccc;
+    }
+  </style>
+</head>
+<body>
+  <div class="stars"></div>
+  <div class="container">
+    <div class="magic-symbol">✩</div>
+    <h1>Die Zeitkapsel</h1>
+    <p>Diese Botschaft ist für <strong>dein 25-jähriges Ich, liebe Helena</strong>.</p>
+    <p class="locked">Diese Nachricht ist versiegelt bis zum <strong>20. Oktober 2035</strong>.</p>
+
+    <div id="countdown"></div>
+
+    <div class="icon">⏳</div>
+    <div class="icon">❤️</div>
+    <div class="icon">✨</div>
+
+    <div id="message">
+      <p>Liebe Helena,</p>
+      <p>heute ist ein besonderer Tag. Du bist 25 geworden. Vielleicht hast du gelacht, geweint, gefeiert oder nachgedacht. Vielleicht stehst du mitten im Leben oder suchst gerade deinen Weg.</p>
+      <p>Ich möchte, dass du weißt: Ich bin stolz auf dich. Du bist wertvoll. Und egal, was war oder ist – du bist genug. Genau so.</p>
+      <p>Vielleicht hilft dir diese Erinnerung heute mehr, als ich es beim Schreiben ahnte.</p>
+      <br>
+      <p>Heute ist ein besonderer Tag. Du feierst deine Jugendweihe – und mit ihr beginnt ein neues Kapitel. Du stehst an der Schwelle zwischen Kindsein und Erwachsenwerden, mit einem Fuß in der Zukunft und einem Herzen voller Möglichkeiten.</p>
+      <p>Ich habe dir diese Zeitkapsel gemacht, weil ich an dich glaube.<br>
+      Und weil ich weiß, dass du eines Tages zurückblicken wirst – vielleicht lächelnd, vielleicht fragend, vielleicht voller Stolz.</p>
+      <p>Diese Kapsel ist für dein zukünftiges Ich.<br>
+      Für die Frau, die du mit 25 sein wirst.<br>
+      Die vielleicht schon genau weiß, wer sie ist – oder noch sucht.<br>
+      Die lacht, liebt, zweifelt, kämpft, wächst.<br>
+      Und hoffentlich niemals vergisst, wie wundervoll sie ist.</p>
+      <p>Ich wünsche dir:</p>
+      <ul>
+        <li>den Mut, du selbst zu sein, auch wenn es unbequem ist.</li>
+        <li>das Vertrauen, dass du nie alles allein schaffen musst.</li>
+        <li>die Gelassenheit, Fehler zu machen – und die Kraft, daraus zu lernen.</li>
+      </ul>
+      <p>Das bisschen Geld hier ist nichts Großes.<br>
+      Aber vielleicht brauchst du es irgendwann – für ein Abenteuer, ein Eisbecher, ein Tattoo, ein Zugticket raus aus dem Alltag oder hinein ins Leben.<br>
+      Nutze es für dich – so wie du bist.</p>
+      <p>Und denk daran:<br>
+      Du bist genug.<br>
+      Du darfst laut sein und leise.<br>
+      Du darfst loslassen und festhalten.<br>
+      Du darfst wachsen – auf deine Art.</p>
+      <p>Ich bin stolz auf dich – jetzt schon.<br>
+      Und ich bin gespannt auf die Frau, die du sein wirst.</p>
+      <p>In Liebe,<br>deine Schwester Hermine<br>Mai 2025</p>
+    </div>
+  </div>
+
+  <script>
+    const unlockDate = new Date('2035-10-20T00:00:00');
+    const now = new Date();
+    const countdownElement = document.getElementById('countdown');
+
+    if (now >= unlockDate) {
+      document.querySelector('.locked').style.display = 'none';
+      document.getElementById('message').style.display = 'block';
+    } else {
+      const diff = unlockDate - now;
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((diff / (1000 * 60)) % 60);
+      const seconds = Math.floor((diff / 1000) % 60);
+      countdownElement.innerHTML = `Noch ${days} Tage, ${hours} Stunden, ${minutes} Minuten und ${seconds} Sekunden.`;
+      setInterval(() => location.reload(), 1000 * 60);
+    }
+  </script>
+</body>
+</html>
